@@ -8,10 +8,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
-    <nav class="flex justify-between items-center p-8 border-b-2">
+  <body class="bg-slate-100">
+    <nav class="bg-white flex justify-between items-center p-8 border-b-2">
       <div class="flex-initial">
-        <span class="font-bold text-lg">Baby | Steps</span>
+        <span class="font-bold text-lg">GTA Stories</span>
       </div>
       <div class="flex justify-center">
         <a href="" class="px-4 text-lg">Home</a>
@@ -27,7 +27,7 @@
       </div>
     </nav>
 
-    <main class="bg-slate-100 flex justify-center">
+    <main class="flex flex-col items-center">
       {% block content %}{% endblock %}
     </main>
 
