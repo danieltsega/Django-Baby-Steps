@@ -93,3 +93,8 @@ def update_book(request, book_id):
             return redirect('book-list')
         
     return render(request, 'add_book.html', {"form": form})
+
+def delete_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    book.delete()
+    return redirect('book-list')
