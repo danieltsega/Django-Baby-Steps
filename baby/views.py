@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 
 from .models import Book
 # Create your views here.
@@ -60,3 +60,12 @@ def details(request, pk):
 def book_list(request):
     books = Book.objects.all()
     return render(request, 'book_list.html', {"books": books})
+
+#adding book details page to filter db
+def book_detail(request, book_id):
+    book_item = Book.objects.filter(pk=book_id)
+    return render(request, 'book_detail.html', {"book_item": book_item})
+
+#adding a community page
+def community_view(request):
+    return render(request, 'community.html', {})
