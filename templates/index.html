@@ -1,0 +1,34 @@
+{% extends "base.html" %} 
+{% block content %} 
+{% load static %} 
+{% for article in articles %}
+<div class="flex justify-start mt-8 p-4 border rounded-sm bg-white">
+  <div class="w-24 h-24 pr-2">
+    <img
+      src="{% static article.image %}"
+      alt="Gta Image"
+      srcset=""
+      class="w-full"
+    />
+  </div>
+  <div class="flex-col justify-between">
+    <div class="flex-initial">
+      <span class="font-bold text-lg">{{ article.title }}</span>
+    </div>
+    <div class="flex-grow mb-4">
+      <span class="font-thin italic text-sm text-gray-500"
+        >{{ article.author}}</span
+      >
+    </div>
+    <div class="flex-initial text-wrap">
+      <p class="font-medium">
+        {{ article.description }}
+      </p>
+    </div>
+  </div>
+  <div class="h-12 my-auto ">
+    <a class="text-sm font-bold px-4 py-2 hover:bg-green-800 rounded-lg border-green" href="{% url 'details' article.id %}">Show More</a>
+  </div>
+</div>
+{% endfor %} 
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+{% for book in books %}
+
+<div class="flex justify-start mt-8 p-4 border rounded-sm bg-white">
+    <div class="w-24 h-24 pr-2">
+      <img
+        src="{% static 'images/book-cover.jpg' %}"
+        alt="Gta Image"
+        srcset=""
+        class="w-full"
+      />
+    </div>
+    <div class="flex-col justify-between">
+      <div class="flex-initial">
+        <span class="font-bold text-lg">{{ book.title }}</span>
+      </div>
+      <div class="flex-grow mb-4">
+        <span class="font-thin italic text-sm text-gray-500"
+          >{{ book.author}}</span
+        >
+      </div>
+      <div class="flex-initial text-wrap">
+        <p class="font-medium">
+          {{ book.published_date }}
+        </p>
+      </div>
+    </div>
+    <div class="h-12 my-auto ">
+      <a class="text-sm font-bold px-4 py-2 hover:bg-green-800 rounded-lg border-green" href="{% url 'details' book.id %}">Show More</a>
+    </div>
+  </div>
+
+{% endfor %}
+
+
+{% endblock %}
