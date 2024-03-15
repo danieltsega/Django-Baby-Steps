@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 
+from .models import Book
 # Create your views here.
 
 def index(request):
@@ -54,3 +55,8 @@ def details(request, pk):
     ]
     article = next((article for article in articles if article['id'] == pk), None)
     return render(request, 'details.html', {"article": article})
+
+#adding a logic to use database instead of local data
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, 'book_list.html', {"books": books})
