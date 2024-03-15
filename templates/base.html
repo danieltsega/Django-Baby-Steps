@@ -9,18 +9,18 @@
   </head>
 
   <body class="bg-slate-100">
-    <nav class="bg-white flex justify-between items-center p-8 border-b-2">
+    <nav class="bg-white flex justify-between items-center p-4 border-b-2">
       <div class="flex-initial">
         <span class="font-bold text-lg">GTA Stories</span>
       </div>
       <div class="flex justify-center">
-        <a href="" class="px-4 text-lg">Home</a>
-        <a href="" class="px-4 text-lg">About Us</a>
-        <a href="" class="px-4 text-lg">Contact Us</a>
+        <a href="{% url 'home' %}" class="px-4 text-lg font-bold">Home</a>
+        <a href="{% url 'book-list' %}" class="px-4 text-lg font-bold">Books</a>
+        <a href="{% url 'community' %}" class="px-4 text-lg font-bold">Community</a>
       </div>
       <div class="flex-initial">
         <button
-          class="bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg"
         >
           Sign In
         </button>
