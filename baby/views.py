@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 
 from .models import Book
+from .forms import BookForm
 # Create your views here.
 
 def index(request):
@@ -63,9 +64,32 @@ def book_list(request):
 
 #adding book details page to filter db
 def book_detail(request, book_id):
-    book_item = Book.objects.filter(pk=book_id)
+    book_item = get_object_or_404(Book, id=book_id)
     return render(request, 'book_detail.html', {"book_item": book_item})
 
 #adding a community page
 def community_view(request):
     return render(request, 'community.html', {})
+
+#create a form to add the books
+def add_book(request):
+    form = BookForm()
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('book-list')
+    
+    return render(request, 'add_book.html', {"form": form})
+
+def update_book(request, book_id):
+    book = Book.objects.get(id=book_id)
+    form = BookForm(instance=book)
+    
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            return redirect('book-list')
+        
+    return render(request, 'add_book.html', {"form": form})
